@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="2020-06-20-18-20-00" author="YuryGovorushkin">
+        <createTable tableName="note_user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="note_user_pkey"/>
+            </column>
+            <column name="login" type="varchar(100)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="password" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(250)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="status" type="varchar(16)"/>
+            <column name="activated" type="boolean"/>
+            <column name="activation_key" type="varchar(200)"/>
+            <column name="created_at" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName="authority">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="authority_pkey"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="note_user_authority">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="note_user_fkey"
+                             referencedTableName="note_user"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="authority_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="note_fkey"
+                             referencedTableName="authority"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,2 @@
+login;password;email;activated;status
+admin;$2a$10$Amgu6BHAol7Tb5eRHHuRBe8zsJZPf6SSVUPiPGG8pSbrH2QJ0TuRm;admin@localhost;true;ACTIVE
