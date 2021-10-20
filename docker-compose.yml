@@ -1,0 +1,15 @@
+services:
+  postgres:
+    container_name: home
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: yura
+      POSTGRES_PASSWORD: 1
+      POSTGRES_DB: a_y
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
